@@ -1,0 +1,21 @@
+*.tfstate
+*.tfstate.backup
+*.tfstate.lock.info
+terraform.tfvars
+terraform_demo.pem
+terraform_demo.key
+node_modules/
+.terraform/
+
+# Terraform state
+terraform.tfstate
+terraform.tfstate.backup
+
+# Terraform variables
+terraform.tfvars
+
+# Public keys
+*.pem
+
+# Private keys
+*.key

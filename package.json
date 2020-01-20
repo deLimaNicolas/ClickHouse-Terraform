@@ -1,0 +1,19 @@
+{
+  "name": "clickhouse-terraform",
+  "version": "1.0.0",
+  "description": "Testinf CLickhouse and Terraform on AWS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/deLimaNicolas/ClickHouse-Terraform.git"
+  },
+  "author": "Vagaboonndd",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/deLimaNicolas/ClickHouse-Terraform/issues"
+  },
+  "homepage": "https://github.com/deLimaNicolas/ClickHouse-Terraform#readme"
+}
