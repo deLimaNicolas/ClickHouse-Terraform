@@ -7,7 +7,7 @@ variable "iam-instance-profile" {
   type    = string
 }
 
-variable "instance" {
+variable "instance-type" {
   default = "t2.micro"
   type    = string
 }
@@ -26,10 +26,11 @@ variable "private-ip" {
 }
 
 variable "subnet-id" {
+  default = ""
   type = string
 }
 
-variable "vpc-security-groups-ids" {
+variable "vpc-security-group-ids" {
   default = []
   type    = list(string)
 }
