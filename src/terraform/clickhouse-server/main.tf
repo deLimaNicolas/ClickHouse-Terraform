@@ -6,6 +6,20 @@ resource "aws_instance" "default" {
   private_ip              = var.private-ip
   subnet_id               = var.subnet-id
   security_groups         = ["${aws_security_group.allow_ssh.name}"]
+
+   user_data = <<-EOF
+#!/bin/bash
+echo "test0"
+sudo yum install yum-utils
+echo "test1"
+sudo rpm --import https://repo.yandex.ru/clickhouse/CLICKHOUSE-KEY.GPG
+sudo yum-config-manager --add-repo https://repo.yandex.ru/clickhouse/rpm/stable/x86_64
+echo "test2"
+sudo yum -y install clickhouse-server clickhouse-client
+echo "test3"
+sudo service clickhouse-server start
+EOF
+   
   
   tags = {
   Name = var.name
