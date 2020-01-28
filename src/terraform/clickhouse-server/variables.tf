@@ -8,7 +8,7 @@ variable "iam-instance-profile" {
 }
 
 variable "instance-type" {
-  default = "t2.micro"
+  default = "t3.small"
   type    = string
 }
 
@@ -29,6 +29,7 @@ variable "subnet-id" {
   default = ""
   type = string
 }
+
 
 variable "vpc-security-group-ids" {
   default = []

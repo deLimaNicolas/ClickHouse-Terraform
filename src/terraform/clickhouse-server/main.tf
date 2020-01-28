@@ -7,24 +7,26 @@ resource "aws_instance" "default" {
   subnet_id               = var.subnet-id
   security_groups         = ["${aws_security_group.allow_ssh.name}"]
 
-   user_data = <<-EOF
-#!/bin/bash
-echo "test0"
-sudo yum install yum-utils
-echo "test1"
-sudo rpm --import https://repo.yandex.ru/clickhouse/CLICKHOUSE-KEY.GPG
-sudo yum-config-manager --add-repo https://repo.yandex.ru/clickhouse/rpm/stable/x86_64
-echo "test2"
-sudo yum -y install clickhouse-server clickhouse-client
-echo "test3"
-sudo service clickhouse-server start
-EOF
-   
+   user_data = "${file("clickhouse-server/clickhouse.sh")}"  
   
   tags = {
   Name = var.name
 }
 
+}
+
+resource "aws_ebs_volume" "clickvol" {
+  availability_zone = "us-west-2"
+  size = 160
+  tags = {
+    Name = 'clickvol'
+  }
+}
+
+resource "aws_volume_attachment" "good-morning-vol" {
+  device_name = "/dev/sdc"
+  volume_id = "${aws_ebs_volume.clickvol.id}"
+  instance_id = "${aws_instance.default.id}"
 }
 
 resource "aws_security_group" "allow_ssh" {

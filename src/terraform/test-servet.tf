@@ -1,6 +1,6 @@
 module "test-server" {
   source   = "./clickhouse-server"
-  ami-id   = "ami-09de7b4017733e2af"
+  ami-id   = "ami-04590e7389a6e577c"
   key-pair =  aws_key_pair.terraform-demo-key.key_name
-  name     = "Test Server"
+  name     = "Cickhouse validation"
 }
